@@ -1,0 +1,14 @@
+/*
+!/.gitignore
+!/Assets/
+/Assets/*
+!/Assets/HX2xianglong90/
+/Assets/HX2xianglong90/*
+!/Assets/HX2xianglong90/HXIME/
+/Assets/HX2xianglong90/HXIME/*
+!/Assets/HX2xianglong90/HXIME/**/
+!/Assets/HX2xianglong90/HXIME/**
+/Assets/HX2xianglong90/HXIME/*.meta
+/Assets/HX2xianglong90/HXIME/**/*.meta
+
+!README.md
