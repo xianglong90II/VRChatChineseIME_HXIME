@@ -11,4 +11,5 @@
 /Assets/HX2xianglong90/HXIME/*.meta
 /Assets/HX2xianglong90/HXIME/**/*.meta
 
-!README.md
+!Readme.md
+!LICENSE
