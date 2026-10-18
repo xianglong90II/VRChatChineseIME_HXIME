@@ -97,8 +97,10 @@ Project Link: https://github.com/xianglong90II/VRChatChineseIME_HXIME
 - A: PinyinEngine には、簡体字中国語と繁体字中国語の両方の単語ライブラリが含まれています。 txt 辞書をロードして、デフォルトの単語ライブラリを置き換えることができます。形式は「文字タブ ピンインタブ 重み（省略可能、デフォルトは 0）」です。
 - ご想像のとおり、これが RIME 辞書の形式です。したがって、RIME 辞書の前半部分を削除し、サフィックスを .txt に変更してインポートすることができます。しかし、デフォルトの単語ライブラリで十分だと思います。
 
-# Licence: LGPL
+# License: Apache-2.0
 https://github.com/xianglong90II/VRChatChineseIME_HXIME
+
+Apache-2.0 applies to the original HXIME project code. Bundled third-party assets, fonts, and dictionary data remain subject to their respective licenses and notices.
 
 # Credit:
 - 图标 Icons　アイコン: Google Material UI & Fonts https://fonts.google.com/
