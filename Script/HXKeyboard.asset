@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: HXKeyboard
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: a38024f18d51f22449050c0643fe340d, type: 2}
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 6bc2acf20a07c1e4e988fb27343a4593,
+    type: 2}
   udonAssembly: 
   assemblyError: 
   sourceCsScript: {fileID: 11500000, guid: 6b9d12d14edf8d446a477de6a5ba6167, type: 3}

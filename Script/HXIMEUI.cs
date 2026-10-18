@@ -19,6 +19,8 @@ public class HXIMEUI : UdonSharpBehaviour
     [SerializeField] private bool defaultUlpb = false;
     [Header("是否默认显示握把？")]
     [SerializeField] private bool defaultHandleOn = true;
+    [Header("是否默认强制全拼？")]
+    [SerializeField] private bool defaultFullSpelling = false;
     [Header("是否默认选词和键盘拆开？")]
     [SerializeField] private bool splitInputbarKeyboard = true;
     
@@ -191,21 +193,28 @@ public class HXIMEUI : UdonSharpBehaviour
             engine.SwitchTrad();
         }
         //set handle
-        if(defaultHandleOn){
-            foreach(Renderer h in handleRenderers){
+        if (defaultHandleOn)
+        {
+            foreach (Renderer h in handleRenderers)
+            {
                 h.enabled = true;
             }
-        }else{
-            foreach(Renderer h in handleRenderers){
+        }
+        else
+        {
+            foreach (Renderer h in handleRenderers)
+            {
                 h.enabled = false;
             }
         }
+        //set default full spelling
+        if (defaultFullSpelling) { accurateMode = true; } else { accurateMode = false; }
         //Set accurate mode
         accurateModeToggle.isOn = accurateMode;
         //Set split
         inputBarConstraint.enabled = !splitInputbarKeyboard;
         // Confirm statement
-        statementText.text = "HXIME v 0.9.2\n©HX2 xianglong90";
+        statementText.text = "HXIME v 0.9.3\n©HX2 xianglong90";
         // Load Skin Data
         skinTitle = new string[skinData.Length];
         skinDescription = new string[skinData.Length];

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: PinyinEngine
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 4cc65cb07e116a646bb85f296a49ad9f, type: 2}
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 5d43a5dfa169e1a4986884a2a0134247,
+    type: 2}
   udonAssembly: 
   assemblyError: 
   sourceCsScript: {fileID: 11500000, guid: 6fc920350726cc54ab817082508c6db2, type: 3}
