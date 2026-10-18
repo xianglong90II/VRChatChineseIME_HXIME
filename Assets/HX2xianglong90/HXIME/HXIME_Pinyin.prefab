@@ -271434,9 +271434,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "HXIME v 0.9.3\n\xA9HX2 xianglong90\n\n\u7A0B\u5E8F: HX2 xianglong90, Clansty\n<size=15>https://github.com/xianglong90II/VRChatChineseIME_HXIME</size>\n\u56FE\u6807:
-    Google Material UI \u5B57\u4F53: Noto Sans\n\u76AE\u80A4\uFF1A\u8BF7\u53C2\u7167\u76AE\u80A4\u4E2D\u5FC3\u5404\u4F5C\u8005\n\u7B80\u4F53\u8BCD\u5E93\uFF1ARIME\u8896\u73CD\u7B80\u5316\u5B57\u62FC\u97F3\n<size=15>https://github.com/rime/rime-pinyin-simp</size>\n\u7E41\u4F53\u8BCD\u5E93\uFF1ARIME\u6719\u6708\u62FC\u97F3\n<size=15>https://github.com/rime/rime-luna-pinyin</size>\nLicence:
-    GPL3.0\n\n<size=30>\u201C\u8BA9\u6C49\u5B57\u8DE8\u8D8A\u6B21\u5143\uFF0C\u8BA9\u6587\u660E\u751F\u751F\u4E0D\u606F\u201D"
+  m_text: "HXIME v 0.9.4\n\xA9HX2 xianglong90\n\n\u7A0B\u5E8F: HX2 xianglong90, Clansty
+    \u51CC\u839E (\u53CC\u62FC), Disappear9 (\u7763\u4FC3\u4E86\u6211\u53BB\u5B66git)\n<size=15>https://github.com/xianglong90II/VRChatChineseIME_HXIME</size>\n\u56FE\u6807:
+    Google Material UI \u5B57\u4F53: Noto Sans\n\u76AE\u80A4\uFF1A\u8BF7\u53C2\u7167\u76AE\u80A4\u4E2D\u5FC3\u5404\u4F5C\u8005\n\u7B80\u4F53\u8BCD\u5E93\uFF1ARIME\u8896\u73CD\u7B80\u5316\u5B57\u62FC\u97F3\n<size=15>https://github.com/rime/rime-pinyin-simp</size>\n\u7E41\u4F53\u8BCD\u5E93\uFF1A\u524D\u8005\u901A\u8FC7OpenCC\u8F6C\u6362\n\nLicence:
+    Apache 2.0\n\n<size=30>\u201C\u8BA9\u6C49\u5B57\u8DE8\u8D8A\u6B21\u5143\uFF0C\u8BA9\u6587\u660E\u751F\u751F\u4E0D\u606F\u201D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 149d10d5f31666548bd49b2781118ca9, type: 2}
   m_sharedMaterial: {fileID: 4872476424971195269, guid: 149d10d5f31666548bd49b2781118ca9,
