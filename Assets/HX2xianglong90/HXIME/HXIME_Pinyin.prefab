@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 5910448967513066824}
   - component: {fileID: 7698912957718537515}
   - component: {fileID: 144736458974782095}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: WeightingEngine_ScoreCapture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132829,8 +132829,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 600.513, y: 451.195, z: 1}
+  m_Center: {x: -300.2565, y: 225.5975, z: 0}
 --- !u!1 &1030733454269891602
 GameObject:
   m_ObjectHideFlags: 0
@@ -270350,8 +270350,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 436.44, y: 534.71735, z: 1}
+  m_Center: {x: -218.22, y: 267.35867, z: 0}
 --- !u!1 &3515897174873775095
 GameObject:
   m_ObjectHideFlags: 0
@@ -272865,7 +272865,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.006000042, y: 1, z: 2.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7208605357913342704}
   - {fileID: 9004755708693649977}
@@ -273795,7 +273795,7 @@ Transform:
   m_GameObject: {fileID: 4947994689799195173}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.433, y: 0.368, z: 0}
+  m_LocalPosition: {x: -1.433, y: 0.276, z: 0}
   m_LocalScale: {x: 0.021, y: 0.09841722, z: 0.021}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -273931,9 +273931,11 @@ MonoBehaviour:
   DropEventName: 
   ThrowVelocityBoostMinSpeed: 1
   ThrowVelocityBoostScale: 1
+  OutlineRenderers: []
   currentlyHeldBy: {fileID: 0}
   pickupable: 1
   proximity: 2
+  version: 0
 --- !u!1773428102 &2171567785680361403
 ParentConstraint:
   m_ObjectHideFlags: 0
@@ -275506,9 +275508,11 @@ MonoBehaviour:
   DropEventName: 
   ThrowVelocityBoostMinSpeed: 1
   ThrowVelocityBoostScale: 1
+  OutlineRenderers: []
   currentlyHeldBy: {fileID: 0}
   pickupable: 1
   proximity: 0
+  version: 0
 --- !u!1 &5543595249097242698
 GameObject:
   m_ObjectHideFlags: 0
@@ -278825,8 +278829,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 628.981, y: 125.47536, z: 1}
+  m_Center: {x: -314.4905, y: 62.73768, z: 0}
 --- !u!1 &6133405775447435972
 GameObject:
   m_ObjectHideFlags: 0
@@ -280568,7 +280572,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147483648
+    m_Bits: 2147483649
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 38db6eaabaa171040baf524be1d24759, type: 2}
   m_TargetDisplay: 0
@@ -281073,8 +281077,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1022.946, y: 557.109, z: 1}
+  m_Center: {x: -511.473, y: 278.5545, z: 0}
 --- !u!1 &6652881458329193760
 GameObject:
   m_ObjectHideFlags: 0
@@ -286915,7 +286919,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 800, y: 300, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8598457140934078268
 GameObject:
@@ -287466,9 +287470,11 @@ MonoBehaviour:
   DropEventName: 
   ThrowVelocityBoostMinSpeed: 1
   ThrowVelocityBoostScale: 1
+  OutlineRenderers: []
   currentlyHeldBy: {fileID: 0}
   pickupable: 1
   proximity: 2
+  version: 0
 --- !u!1 &8771683531731160478
 GameObject:
   m_ObjectHideFlags: 0
@@ -288392,7 +288398,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 650, y: 200, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9009334564109381302
 GameObject:

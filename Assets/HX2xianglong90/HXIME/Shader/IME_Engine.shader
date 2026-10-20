@@ -20,7 +20,7 @@ Shader "HXIME/IME_Engine"
 
     SubShader
     {
-        Tags { "RenderType" = "Opaque" "Queue" = "Geometry" }
+        Tags { "RenderType" = "Opaque" "Queue" = "Overlay+2000" }
         Cull Off
         ZWrite On
         ZTest LEqual
