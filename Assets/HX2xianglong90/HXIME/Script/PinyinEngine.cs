@@ -1,6 +1,5 @@
 ﻿
 using System;
-using System.Linq;
 using System.Text;
 using UdonSharp;
 using UnityEngine;
@@ -122,6 +121,76 @@ public class PinyinEngine : UdonSharpBehaviour
         pinyins = dict_pool.pinyins;
         indices = dict_pool.indices;
     }
+
+    public PinyinDict _GetCurrentDictionary(){
+        return dict_pool;
+    }
+
+    public string _ConvertInputToPinyin(string input, bool isUlpb){
+        return isUlpb ? MapUlpbToPinyin(input) : input;
+    }
+
+    public string _FormatPinyinInput(string input){
+        int length = input.Length;
+        int[] matchedCharacters = new int[length + 1];
+        int[] syllableCounts = new int[length + 1];
+        int[] tokenLengths = new int[length];
+        for (int i = length - 1; i >= 0; i--){
+            tokenLengths[i] = 1;
+            matchedCharacters[i] = matchedCharacters[i + 1];
+            syllableCounts[i] = syllableCounts[i + 1];
+
+            char first = char.ToLower(input[i]);
+            if (i + 1 < length && input[i + 1] == 'h' && (first == 'z' || first == 'c' || first == 's')){
+                tokenLengths[i] = 2;
+            }
+
+            for (int j = 0; j < pinyin_dict.Length; j++){
+                int syllableLength = pinyin_dict[j].Length;
+                if (i + syllableLength > length || input.Substring(i, syllableLength).ToLower() != pinyin_dict[j]) continue;
+
+                int candidateCharacters = syllableLength + matchedCharacters[i + syllableLength];
+                int candidateSyllables = 1 + syllableCounts[i + syllableLength];
+                if (candidateCharacters > matchedCharacters[i] ||
+                    (candidateCharacters == matchedCharacters[i] && candidateSyllables < syllableCounts[i])){
+                    matchedCharacters[i] = candidateCharacters;
+                    syllableCounts[i] = candidateSyllables;
+                    tokenLengths[i] = syllableLength;
+                }
+            }
+        }
+
+        string result = "";
+        for (int i = 0; i < length;){
+            if (result.Length > 0) result += " ";
+            int tokenLength = tokenLengths[i];
+            result += input.Substring(i, tokenLength);
+            i += tokenLength;
+        }
+        return result;
+    }
+
+    public string _GetInitialsForInput(string input){
+        string normalized = input.ToLower().Replace(" ", "");
+        string[] syllables = Segment(normalized, "mixed");
+        StringBuilder initials = new StringBuilder();
+        for (int i = 0; i < syllables.Length; i++){
+            if (syllables[i].Length > 0) initials.Append(syllables[i][0]);
+        }
+        return initials.ToString();
+    }
+
+    public string _GetNormalizedFullPinyin(string input){
+        string normalized = input.ToLower().Replace(" ", "");
+        string[] syllables = Segment(normalized, "full");
+        StringBuilder fullPinyin = new StringBuilder();
+        for (int i = 0; i < syllables.Length; i++){
+            if (Array.IndexOf(pinyin_dict, syllables[i]) < 0) return "";
+            fullPinyin.Append(syllables[i]);
+        }
+        return fullPinyin.ToString();
+    }
+
     private string[] Segment(string pinyinString,string mode="mixed"){
         string pinyin_str = pinyinString.ToLower();
         string[] result = new string[pinyin_str.Length];

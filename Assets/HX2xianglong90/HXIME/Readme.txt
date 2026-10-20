@@ -1,4 +1,4 @@
-HXIME v0.94 Chinese Input Keyboard VRChat世界用中文输入法+键盘 VRChat用中国語入力+キーボード
+HXIME v1.0 Chinese Input Keyboard VRChat世界用中文输入法+键盘 VRChat用中国語入力+キーボード
 
 还在苦恼没有办法在世界里痛快地打中文吗？就用HXIME把你憋了那么多的中文通通打出来吧！
 支持全拼，简拼，混拼，小鹤双拼，中英切换，简体繁体切换。安装简便，还可以自定义各种皮肤哦。
@@ -91,17 +91,18 @@ Q: 独自の語彙をインポートしたい場合はどうすればいいで�
 A: PinyinEngine には、簡体字中国語と繁体字中国語の両方の単語ライブラリが含まれています。 txt 辞書をロードして、デフォルトの単語ライブラリを置き換えることができます。形式は「文字タブ ピンインタブ 重み（省略可能、デフォルトは 0）」です。
 ご想像のとおり、これが RIME 辞書の形式です。したがって、RIME 辞書の前半部分を削除し、サフィックスを .txt に変更してインポートすることができます。しかし、デフォルトの単語ライブラリで十分だと思います。
 
-Licence: GPL3.0
+Licence: Apache 2.0
 https://github.com/xianglong90II/VRChatChineseIME_HXIME
 
 Credit:
 图标 Icons　アイコン: Google Material UI & Fonts https://fonts.google.com/
 字体 Font　フォント: Noto Sans  https://fonts.google.com/noto/specimen/Noto+Sans+SC?lang=zh_Hans
 简体词库 Simplified Chinese Dictionary　簡体字辞書データ：RIME袖珍简化字拼音 https://github.com/rime/rime-pinyin-simp
-繁体词库 Traditional Chinese Dictionary　繫体字辞書データ：RIME朙月拼音 https://github.com/rime/rime-luna-pinyin
+繁体词库 Traditional Chinese Dictionary　繫体字辞書データ：使用OpenCC转化后的RIME袖珍简化字拼音（前者） The dictionary above converted by OpenCC
 
-Updates:
+v 1.0.0 Added LM(Language Model) mode, the shader speeded up the response speed about 40%. 添加了LM(语言模型)模式，输入法提升了40%的相应速度。
 v 0.9.4 Changed traditional Chinese dictionary and updated a more open License 更换了繁体字典，并且更换了更开放的协议 繫体字中国語の辞書を更新、オープンなライセンスに変更
+---Versions Below Uses GPL License 下面这些版本使用GPL协议 以下のバージョンはGPLを使います。---
 v 0.9.3 Added Xiaohe Doube Pinyin, adjusted the way of input to more popular IME alike, Added the default force accurate mode option 添加了小鹤双拼，将输入习惯对齐主流输入法，添加默认强制全拼选项 小鶴ダブルピンインを追加しました。入力操作を主流のIMEと一致しました。デフォルト強制全部入力モードの設定が可能にしました。
 v 0.9.2 Fixed the problems that cannot type “ang”,"ing,"ong" syllables. 修复了打不出后鼻音的问题。 後鼻音が入力できない不具合が修正しました。
 v 0.9.1 Fixed the UI collision with players. 修复了UI界面会碰撞玩家。 UIがプレイヤーと衝突する問題を修正しました。

@@ -1,6 +1,4 @@
-﻿
-using System;
-using System.Linq;
+﻿using System;
 using TMPro;
 using UdonSharp;
 using UnityEngine;
@@ -19,10 +17,13 @@ public class HXIMEUI : UdonSharpBehaviour
     [SerializeField] private bool defaultUlpb = false;
     [Header("是否默认显示握把？")]
     [SerializeField] private bool defaultHandleOn = true;
-    [Header("是否默认强制全拼？")]
+    [Header("是否默认强制完整拼写？")]
     [SerializeField] private bool defaultFullSpelling = false;
     [Header("是否默认选词和键盘拆开？")]
     [SerializeField] private bool splitInputbarKeyboard = true;
+
+    [Header("是否默认使用Shader加速（LM模式）？")]
+    [SerializeField] private bool useLmMode = true;
     
     [Header("目标输入框")]
     public TMP_InputField targetInputfield;
@@ -33,10 +34,8 @@ public class HXIMEUI : UdonSharpBehaviour
     private bool shifted = false;
     private int candidateLimits = 30;
     private bool accurateMode = false;
-    // pinyin initials
-    private const string pinyinInitials = "bpmfdtnlgkhjqxzcsry";
     // word candidates
-    private string[] wordCandidates;
+    private string[] wordCandidates = new string[0];
     private int pageResultNum = 5;
     private int currentPageIndex = 0;
     private int maxPageIndex =0;
@@ -54,6 +53,8 @@ public class HXIMEUI : UdonSharpBehaviour
     [SerializeField] private GameObject switchBarHandle;
     [SerializeField] private GameObject keyboardHandle;
     [SerializeField] private PinyinEngine engine;
+    [SerializeField] private PinyinLM lmEngine;
+    [SerializeField] private TMP_Text engineModeLabel;
     private Renderer[] handleRenderers = new Renderer[3];
     private Renderer[] bgRenderers = new Renderer[6];
     // switch bar
@@ -192,6 +193,8 @@ public class HXIMEUI : UdonSharpBehaviour
         }else{
             engine.SwitchTrad();
         }
+        if (lmEngine != null) lmEngine._SetDictionary(isSimplified, engine._GetCurrentDictionary());
+        RefreshEngineModeLabel();
         //set handle
         if (defaultHandleOn)
         {
@@ -275,26 +278,10 @@ public class HXIMEUI : UdonSharpBehaviour
                 inputText = " " + inputText;
             }
         }
-        else if(langMode ==1 && accurateMode==false){//中文
-            // 如果是后鼻音就直接加空格
-            if(IMEInputField.text.EndsWith("ng")){
-                inputText = " " + inputText;
-            }else{
-            // 检查输入是否是声母，如果是，则在前面加一个空格
-            if (pinyinInitials.Contains(inputText)&&IMEInputField.text!=""){
-                //输入字是h的情况下上一个字不是zcs, 即支持输入zh ch sh
-                if(!(inputText=="h"&&"zcs".Contains(IMEInputField.text[IMEInputField.text.Length-1]))){
-                    //前鼻音
-                    if(!(inputText=="n"&&"aoeiu".Contains(IMEInputField.text[IMEInputField.text.Length-1]))){
-                        //后鼻音
-                        if(!(IMEInputField.text.EndsWith("an")||IMEInputField.text.EndsWith("in")||IMEInputField.text.EndsWith("on"))){
-                            inputText = " " + inputText;
-                        }
-                    }
-                }
-                }
-            }
-            }
+        else if(langMode == 1 && accurateMode == false){
+            IMEInputField.text = engine._FormatPinyinInput(IMEInputField.text.Replace(" ", "") + inputText);
+            return;
+        }
         IMEInputField.text = IMEInputField.text+inputText;
     }
     private void MarkButtonPressedAgent(int buttonIndex){
@@ -417,12 +404,29 @@ public class HXIMEUI : UdonSharpBehaviour
             targetInputfield.text += " ";
             return;
         }
+        if (accurateMode){
+            if (!IMEInputField.text.EndsWith(" ")) IMEInputField.text += " ";
+            return;
+        }
         WordCandidatePressedAgent(0);
     }
     //获取候选
     public void GetWordCandidates(){
         if(langMode == 1){// 中文 —> 开始拼音
-            wordCandidates = engine.Match(IMEInputField.text,candidateLimits,accurateMode, ulpb);
+            string input = engine._ConvertInputToPinyin(IMEInputField.text, ulpb);
+            if (useLmMode && lmEngine != null){
+                lmEngine._SubmitInput(input, candidateLimits, accurateMode);
+                if (!accurateMode){
+                    wordCandidates = new string[0];
+                    currentPageIndex = 0;
+                    maxPageIndex = 0;
+                    RefreshWordCandidates();
+                    return;
+                }
+            }else{
+                wordCandidates = engine.Match(IMEInputField.text,candidateLimits,accurateMode, ulpb);
+            }
+            if (wordCandidates == null) wordCandidates = new string[0];
             currentPageIndex = 0;
             maxPageIndex = wordCandidates.Length/pageResultNum;
             if(wordCandidates.Length%pageResultNum==0){
@@ -430,6 +434,15 @@ public class HXIMEUI : UdonSharpBehaviour
             }
             RefreshWordCandidates();
         }
+    }
+
+    public void _OnLMCandidatesReady(string[] candidates){
+        if (!useLmMode || langMode != 1) return;
+        wordCandidates = candidates == null ? new string[0] : candidates;
+        currentPageIndex = 0;
+        maxPageIndex = wordCandidates.Length / pageResultNum;
+        if (wordCandidates.Length % pageResultNum == 0) maxPageIndex--;
+        RefreshWordCandidates();
     }
     private void RefreshWordCandidates(){
         foreach(Button go in wordCandidateButtons){
@@ -534,12 +547,23 @@ public class HXIMEUI : UdonSharpBehaviour
         if(isSimplified){
             switchBarSimpTradButton.text="简";
         	engine.SwitchSimp();
-            GetWordCandidates();
         }else{
             switchBarSimpTradButton.text="繁";
             engine.SwitchTrad();
-            GetWordCandidates();
         }
+        if (lmEngine != null) lmEngine._SetDictionary(isSimplified, engine._GetCurrentDictionary());
+        GetWordCandidates();
+    }
+
+    public void _ToggleEngineMode(){
+        if (lmEngine == null) return;
+        useLmMode = !useLmMode;
+        RefreshEngineModeLabel();
+        GetWordCandidates();
+    }
+
+    private void RefreshEngineModeLabel(){
+        if (engineModeLabel != null) engineModeLabel.text = useLmMode ? "模式：LM" : "模式：传统";
     }
     //切换全拼双拼
 	public void SwitchUlpb(){
