@@ -1,6 +1,6 @@
 ### HXIME v0.9 Chinese Input Keyboard VRChat世界用中文输入法+键盘 VRChat用中国語入力+キーボード
 
-作者还不会用git，所以非常感谢帮忙提交PR的大家。
+*热烈庆祝！本项目已经将使用GPL的词典替换，从0.9.4版本开始使用更加开放的Apache协议！*
 
 还在苦恼没有办法在世界里痛快地打中文吗？就用HXIME把你憋了那么多的中文通通打出来吧！
 支持全拼，简拼，混拼，中英切换，简体繁体切换。安装简便，还可以自定义各种皮肤哦。
@@ -106,4 +106,4 @@ Apache-2.0 applies to the original HXIME project code. Bundled third-party asset
 - 图标 Icons　アイコン: Google Material UI & Fonts https://fonts.google.com/
 - 字体 Font　フォント: Noto Sans  https://fonts.google.com/noto/specimen/Noto+Sans+SC?lang=zh_Hans
 - 简体词库 Simplified Chinese Dictionary　簡体字辞書データ：RIME袖珍简化字拼音 https://github.com/rime/rime-pinyin-simp
-- 繁体词库 Traditional Chinese Dictionary　繫体字辞書データ：RIME朙月拼音 https://github.com/rime/rime-luna-pinyin
+- 繁体词库 Traditional Chinese Dictionary　繫体字辞書データ：使用OpenCC转化后的RIME袖珍简化字拼音（前者） The dictionary above converted by OpenCC
